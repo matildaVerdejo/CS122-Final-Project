@@ -1,4 +1,4 @@
-# CS122 Project: _______
+# CS122 Project: FaultLine: Interactive Earthquake Tracker
 
 ## Authors: 
 - Matilda Verdejo
@@ -15,6 +15,7 @@ This prject is an interacive real-time Earthquake Monitoring tool Built in Pytho
 ### Interface Plan
 
 ### Data Collection and Storage Plan (Partner #1: Guadalupe Carrillo Vega)
+Data will be collected from the USGS Earthquake Hazards API (https://earthquake.usgs.gov/fdsnws/event/1/), which provides free access to global seismic event data with no API key requiered. The program will send HTTP GET requests using Python's 'requests' library, with query parameters for location, magnitude range, and date range supplied by the user through our interface. USGS responses are returned in GeoJSON format and will be parsed using Python's built-in 'json' module to extract relevent fields including event time, location name, latitude, longitude, depth, and magnitude. The cleaned data will be stored locally in a CSV file using Python's 'csv' module, with each row representing one earthquake event. If the user runes a new query, new results will be appended to the existing CSV file with a timestamp column so records from different sessions can be destinguished.     
 
 ### Data Analysis and Visualization Plan (Partner #2: Matilda Verdejo)
 
