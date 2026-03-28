@@ -30,4 +30,7 @@ This project is an interactive real-time Earthquake Monitoring tool built with P
 - If the user runs a new query, new results will be appended to the existing CSV file with a timestamp column so records from different sessions can be destinguished.     
 
 ### Data Analysis and Visualization Plan (Partner #2: Matilda Verdejo):
-
+- Once earthquake data is collected and stored, the program will perform statistical analyses to allow users to understand seismic patterns, using Python's numpy and scipy libraries.
+- This includes calculating median, mean, standard deviation of earthquake magnitudes, and frequency trends over user specified time ranges.
+- We will use matplotlib for the visualization component to generate two plots, a chart showing earthquake frequency over time, and a histogram showing distribution of magnitude in a given dataset.
+- Both plots will most probably be in the interface rather than in other pop-up windows, but that remains to be determined.
