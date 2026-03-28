@@ -9,10 +9,16 @@
 - guadalupe.carrillovega@sjsu.edu
 
 ## Project Description:
-This prject is an interacive real-time Earthquake Monitoring tool Built in Python. It pulls seismic data from the USGS Earthquake Hazards API, a free and publicaly available data source maintained by the U.S Geological Survey. Users can search for recent earthquakes by location, filter results by magnitude and date range, and view a live feed of seismic activity around the world. The goal of this project is to make seismic activity data more accessible and interpretable through a user-freindly interface combined with meaningful statistical analysis and visual outputs. Understanding earthquake patterns helps scientists, governments, and everyday people anticipate risk, allocate emergency resources, and build safer infastrucutre - a need that is urgent in California, where sciesmic activity is a reality. 
+This project is an interactive real-time Earthquake Monitoring tool built with Python. It pulls seismic data from the USGS Earthquake Hazards API, a free and publicly available data source maintained by the U.S. Geological Survey. Users can search for recent earthquakes by location, filter results by magnitude and date range, and view a live feed of seismic activity around the world. The goal of this project is to make seismic activity data more accessible and interpretable through a user-friendly interface combined with meaningful statistical analysis and visual outputs. Understanding earthquake patterns helps scientists, governments, and everyday people anticipate risk, allocate emergency resources, and build safer infrastructure; a need that is urgent in California, where seismic activity is prevalent. 
 
 ## Project Outline/Plan 
 ### Interface Plan:
+- The interface will consist of a GUI built with Python's Tkinter library.
+- We intend to include two windows, "Home" which will allow users to request data and select filters, and "Results" which will display the earthquake information.
+- The "Home" window's filters will come in the form of buttons for selecting magnitude range, location, date (sliders/dropdowns), and ultimately a button to fetch data, triggering the API request.
+- When the user clicks the "fetch data" button, it will prompt the "Results" window to pop up, showing graphs/tables of earthquake events.
+- In this "Results" window we may also include other buttons for viewing statistical analysis and generating visualizations.
+- Additonal widgets may include buttons to store current results, and to clear history to reset the program.
 
 ### Data Collection and Storage Plan (Partner #1: Guadalupe Carrillo Vega):
 - Data will be collected from the USGS Earthquake Hazards API (https://earthquake.usgs.gov/fdsnws/event/1/), which provides free access to global seismic event data with no API key requiered.
