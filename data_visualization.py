@@ -76,7 +76,7 @@ def plot_magnitude_histogram(earthquakes, ax=None):
     else:
         fig = ax.get_figure()
 
-    n, bins, patches = ax.hist(magnitudes, bins=15, color="e07b3a", edgecolor="white", linewidth=0.5)
+    n, bins, patches = ax.hist(magnitudes, bins=15, color="#e07b3a", edgecolor="white", linewidth=0.5)
 
     ax.set_title("Magnitude Distribution", fontsize=13, fontweight="bold", pad=10)
     ax.set_xlabel("Magnitude", fontsize=10)
@@ -104,12 +104,24 @@ def plot_magnitude_histogram(earthquakes, ax=None):
     # frequency_data (dict): output from compute_frequency_trend()
 # returns: matplotlib.figure.Figure: figure with 2 subplots, none if both data inputs are invalid
 def build_results_figure(earthquakes, frequency_data):
-
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4.5))
-    fig.patch.set_facecolor("#f7f7f7")
-
-    plot_frequency_over_time(frequency_data, ax=ax1)
-    plot_magnitude_histogram(earthquakes, ax=ax2)
-
+    magnitudes = [eq["magnitude"] for eq in earthquakes if eq.get("magnitude") is not None]
+    if not magnitudes:
+        return None
+ 
+    has_freq = (
+        frequency_data is not None
+        and len(frequency_data.get("dates", [])) >= 2
+    )
+ 
+    if has_freq:
+        fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 4.5))
+        fig.patch.set_facecolor("#f7f7f7")
+        plot_frequency_over_time(frequency_data, ax=ax1)
+        plot_magnitude_histogram(earthquakes, ax=ax2)
+    else:
+        fig, ax = plt.subplots(1, 1, figsize=(7, 4.5))
+        fig.patch.set_facecolor("#f7f7f7")
+        plot_magnitude_histogram(earthquakes, ax=ax)
+ 
     fig.tight_layout(pad=2.5)
     return fig
