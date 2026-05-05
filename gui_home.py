@@ -3,7 +3,7 @@ from tkinter import ttk, messagebox
 from tkcalendar import DateEntry
 
 from data_access import fetch_earthquakes, parse_earthquakes
-from data_organization import save_to_csv
+from data_organization import save_to_csv, clear_csv
 from gui_result import ResultsWindow
 
 COUNTRY_COORDINATES = {
@@ -54,7 +54,7 @@ class HomeWindow:
         self.location_dropdown = ttk.OptionMenu(
             root,
             self.selected_country,
-            "USA",
+            'USA',
             *COUNTRY_COORDINATES.keys()
         )
         self.location_dropdown.config(width = 18)
@@ -63,53 +63,53 @@ class HomeWindow:
         #start date label
         self.start_date_label = tk.Label(
             root,
-            text="Start Date:",
-            font=("Helvetica", 11)
+            text='Start Date:',
+            font=('Helvetica', 11)
         )
-        self.start_date_label.grid(row=2, column=0, sticky="e", padx=(20, 10), pady=8)
+        self.start_date_label.grid(row=2, column=0, sticky='e', padx=(20, 10), pady=8)
 
         #start date entry
         self.start_date_entry = DateEntry(
             root,
             width=18,
-            background="darkblue",
-            foreground="white",
-            borderwidth=2,
-            date_pattern="yyyy-mm-dd",
+            background= 'darkblue',
+            foreground= 'white',
+            borderwidth= 2,
+            date_pattern= 'yyyy-mm-dd',
             selectmode = 'day'
         )
-        self.start_date_entry.grid(row=2, column=1, sticky="w", padx=(0, 20), pady=8)
+        self.start_date_entry.grid(row=2, column=1, sticky= 'w', padx=(0, 20), pady=8)
 
         #end date label
         self.end_date_label = tk.Label(
             root,
-            text="End Date:",
-            font=("Helvetica", 11)
+            text= 'End Date:',
+            font=('Helvetica', 11)
         )
-        self.end_date_label.grid(row=3, column=0, sticky="e", padx=(20, 10), pady=8)
+        self.end_date_label.grid(row=3, column=0, sticky='e', padx=(20, 10), pady=8)
  
         #end date entry
         self.end_date_entry = DateEntry(
             root,
-            width=18,
-            background="darkblue",
-            foreground="white",
-            borderwidth=2,
-            date_pattern="yyyy-mm-dd",
+            width = 18,
+            background = 'darkblue',
+            foreground = 'white',
+            borderwidth = 2,
+            date_pattern = 'yyyy-mm-dd',
             selectmode = 'day'
         )
-        self.end_date_entry.grid(row=3, column=1, sticky="w", padx=(0, 20), pady=8)
+        self.end_date_entry.grid(row=3, column=1, sticky='w', padx=(0, 20), pady=8)
 
         #magnitude label
         self.magnitude_label = tk.Label(
             root,
-            text="Min Magnitude:",
-            font=("Helvetica", 11)
+            text= 'Min Magnitude:',
+            font= ('Helvetica', 11)
         )
-        self.magnitude_label.grid(row=4, column=0, sticky="e", padx=(20, 10), pady=8)
+        self.magnitude_label.grid(row=4, column=0, sticky= 'e', padx=(20, 10), pady=8)
  
         self.magnitude_frame = tk.Frame(root)
-        self.magnitude_frame.grid(row=4, column=1, sticky="w", padx=(0, 20), pady=8)
+        self.magnitude_frame.grid(row=4, column=1, sticky= 'w', padx=(0, 20), pady=8)
  
         self.magnitude_var = tk.DoubleVar()
         
@@ -126,28 +126,47 @@ class HomeWindow:
             variable = self.magnitude_var,
             length = 160,
         )
-        self.magnitude_slider.pack(side="left")
+        self.magnitude_slider.pack(side = "left")
  
         self.magnitude_value_label = tk.Label(
             self.magnitude_frame,
             textvariable = self.magnitude_var,
-            font = ("Helvetica", 11)
+            font = ('Helvetica', 11)
         )
-        self.magnitude_value_label.pack(side="left", padx=(8, 0))
+        self.magnitude_value_label.pack(side = 'left', padx=(8, 0))
 
         #fetch data button
         self.fetch_button = tk.Button(
             root,
-            text = "Fetch Data",
-            font = ("Helvetica", 12, "bold"),
-            bg = "darkblue",
-            fg = "white",
+            text = 'Fetch Data',
+            font = ('Helvetica', 12, 'bold'),
+            bg = 'darkblue',
+            fg = 'white',
             padx = 20,
             pady = 8,
             command = self.fetch_data
         )
         self.fetch_button.grid(row=5, column=0, columnspan=2, pady=(15, 25))
 
+
+        #to center clear history and new search button make frame
+        self.button_frame = tk.Frame(root)
+        self.button_frame.grid(row = 6, column= 0, columnspan= 2, pady = (0,25))
+        
+        #Clear history, contents of csv button
+        self.clear_button = tk.Button(
+            self.button_frame,
+            text = 'Clear History',
+            font = ('Helvetica', 11),
+            bg = 'firebrick',
+            fg = 'white',
+            padx=20,
+            pady= 8,
+            command = self.clear_history
+        )
+        self.clear_button.pack(side= 'left', padx = (0,10))
+
+        
     def fetch_data(self):
         """
         Uses user inputs to call fetch_earthquakes() and parse_earthquakes() from data access
@@ -191,4 +210,15 @@ class HomeWindow:
         # open results window
         ResultsWindow(self.root, earthquakes)
 
+    def clear_history(self):
+        """
+        clears earthquake_data.csv file
+        """
 
+        confirm = messagebox.askyesno('Clear History', 'Are you sure you want to delete all saved earthquake data?')
+
+        if confirm:
+            clear_csv()
+            messagebox.showinfo('Cleared', 'Earthquake history has been cleared.')
+
+    

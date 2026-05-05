@@ -42,3 +42,21 @@ def save_to_csv(earthquakes, filename = "earthquake_data.csv"):
             writer.writerow(row)
         
     print(f"saved {len(earthquakes)} earthquake records to '{filename}'")
+
+def clear_csv(filename = "earthquake_data.csv"):
+    """
+    clears contents of CSV file by deleting it
+
+    Parameters:
+        filename (str): name of the CSV file that will be deleted, defults to 'earthquake_data.csv'
+    
+    Returns:
+        None    
+    """
+    if os.path.isfile(filename):
+        os.remove(filename)
+        print(f"{filename} has been cleared")
+    else:
+        print(f"No file named '{filename}' found")
+
+    
