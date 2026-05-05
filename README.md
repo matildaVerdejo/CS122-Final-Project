@@ -47,5 +47,5 @@ This project is an interactive real-time Earthquake Monitoring tool built with P
   - On the results page, the events list at the bottom of the window isn't very visible when using Windows (it doesn't let users scroll down the page), but this does work if you're using macOS
 
 - Future implementations
-  - we would like add more features so that the user can interact with the data more in the results page (such as being able to click on the graphs to see specific information, adding a map component to get a visual idea of where events took place)
-  - we would also like to improve the look of the UI, maybe making a logo and pick a color scheme that goes well with our focus (earth, nature, mathematics, etc)
+  - We would like add more features so that the user can interact with the data more in the results page (such as being able to click on the graphs to see specific information, adding a map component to get a visual idea of where events took place)
+  - We would also like to improve the look of the UI, maybe making a logo and pick a color scheme that goes well with our focus (earth, nature, mathematics, etc)
