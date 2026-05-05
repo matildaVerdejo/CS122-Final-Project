@@ -45,12 +45,12 @@ def compute_frequency_trend(earthquakes):
         if time_str:
             # extracting date 'YYYY-MM-DD'
             date = time_str[:10]
-            date_counts[data] += 1
+            date_counts[date] += 1
 
     if len(date_counts) < 2:
         return None
 
-    sorted_dates = sorted(date_counts.key())
+    sorted_dates = sorted(date_counts.keys())
     counts = [date_counts[d] for d in sorted_dates]
 
     from datetime import date as date_type
