@@ -31,6 +31,7 @@ class HomeWindow:
         self.root.title("FaultLine: Earthquake Tracker")
         self.root.resizable(False, False)
 
+
         #Title label
         self.title_label = tk.Label(
             root,
@@ -137,19 +138,19 @@ class HomeWindow:
 
         #fetch data button
         self.fetch_button = tk.Button(
-            root,
-            text = 'Fetch Data',
-            font = ('Helvetica', 12, 'bold'),
-            bg = 'darkblue',
-            fg = 'white',
-            padx = 20,
-            pady = 8,
-            command = self.fetch_data
+             root,
+             text = 'Fetch Data',
+             font = ('Helvetica', 12, 'bold'),
+             bg = 'pink',
+             fg = 'black',
+             padx = 20,
+             pady = 8,
+             command = self.fetch_data
         )
         self.fetch_button.grid(row=5, column=0, columnspan=2, pady=(15, 25))
 
 
-        #to center clear history and new search button make frame
+        #to center clear history 
         self.button_frame = tk.Frame(root)
         self.button_frame.grid(row = 6, column= 0, columnspan= 2, pady = (0,25))
         
@@ -158,8 +159,8 @@ class HomeWindow:
             self.button_frame,
             text = 'Clear History',
             font = ('Helvetica', 11),
-            bg = 'firebrick',
-            fg = 'white',
+            bg = 'pink',
+            fg = 'black',
             padx=20,
             pady= 8,
             command = self.clear_history
@@ -220,5 +221,3 @@ class HomeWindow:
         if confirm:
             clear_csv()
             messagebox.showinfo('Cleared', 'Earthquake history has been cleared.')
-
-    
