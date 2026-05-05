@@ -34,3 +34,7 @@ This project is an interactive real-time Earthquake Monitoring tool built with P
 - We will use matplotlib for the visualization component to generate two plots, a chart showing earthquake frequency over time, and a histogram showing distribution of magnitude in a given dataset.
 - Both plots show up in the same results window, rather than other pop-ups
 - we also added a "close" button that closes the results window and redirects users back to the home window.
+
+#### Installation instructions: 
+- Ensure to have the required libraries installed. You can find all the libraries used in the program on the requirements.txt file.
+- You can run the program from the terminal or from an IDE like Vscode. If you wish to run the program form the terminal run the command _python main.py_. Similiarily, if running from an IDE run the program from main.py file.
