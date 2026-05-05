@@ -4,6 +4,7 @@ from tkcalendar import DateEntry
 
 from data_access import fetch_earthquakes, parse_earthquakes
 from data_organization import save_to_csv
+from gui_result import ResultsWindow
 
 COUNTRY_COORDINATES = {
     "Chile": (-35.6751, -71.5430),
@@ -187,9 +188,7 @@ class HomeWindow:
         #save results to CSV
         save_to_csv(earthquakes)
 
-        
-        
-        #TODO: Open results window
-        messagebox.showinfo("Success", f"Fetched {len(earthquakes)} earthquake(s). Results window coming...")
+        # open results window
+        ResultsWindow(self.root, earthquakes)
 
 
