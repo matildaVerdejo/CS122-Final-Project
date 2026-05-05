@@ -76,7 +76,7 @@ def plot_magnitude_histogram(earthquakes, ax=None):
     else:
         fig = ax.get_figure()
 
-    n, bins, patches = ax.hist(magnitudes, bins=15, color="#e07b3a", edgecolor="white", linewidth=0.5)
+    n, bins, patches = ax.hist(magnitudes, bins=15, color="#f9b1ed", edgecolor="white", linewidth=0.5)
 
     ax.set_title("Magnitude Distribution", fontsize=13, fontweight="bold", pad=10)
     ax.set_xlabel("Magnitude", fontsize=10)
